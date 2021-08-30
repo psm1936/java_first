@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newsMapper">
+   
+   <!-- 뉴스 작성 -->
+   <insert id="insert">
+   	
+   	insert into news(news_index,news_title) values(news_index_seq.nextval,#{news_title})
+   </insert>
+   
+   <select id="list" resultType="kr.co.summary.domain.NewsVO">
+   	select news_index,news_title from news order by news_index desc
+   	
+   </select>
+   
+</mapper>
