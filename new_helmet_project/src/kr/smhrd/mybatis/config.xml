@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="kr/smhrd/mybatis/db.properties" />
+	<typeAliases>
+		<typeAlias type="kr.smhrd.model.LoginVO" alias="loginVO" />
+		<typeAlias type="kr.smhrd.model.PointVO" alias="pointVO" />
+		<typeAlias type="kr.smhrd.model.RentVO" alias="rentVO" />
+	   <typeAlias type="kr.smhrd.model.HelmetVO" alias="helmetVO" />
+	   <typeAlias type="kr.smhrd.model.RentalshopVO" alias="rentalshopVO" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="kr/smhrd/mybatis/BoardMapper.xml" />
+	</mappers>
+</configuration>

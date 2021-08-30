@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mybatis.BoardMapper">
+
+	<select id="loginMember" resultType="loginVO">
+		select * from member where
+		memberid =#{memberid} and password = #{password}
+	</select>
+
+	<insert id="memberInsert" parameterType="loginVO">
+		INSERT INTO member
+		values(#{memberid},#{membername},#{memberage},#{password},#{memberphone})
+	</insert>
+	
+	   <insert id="rentInsert" parameterType="rentVO">
+      INSERT INTO rent(rentplaceId,memberid,helmetid)
+      values(#{rentplaceId},#{memberid}, #{helmetid})
+	</insert>
+
+	<update id="memberUpdate">
+		update member set membername= #{membername},memberage =#{memberage}, 
+		password = #{password},memberphone=#{memberphone} where memberid = #{memberid}
+	</update>
+
+	<select id="pointlist" resultType="pointVO">
+		select p.earndate,p.earnpoint,p.useddate,p.usedpoint
+		from point p where p.memberid=#{memberid}
+	</select>
+	
+	<select id="rentlist" resultType="rentVO">
+		select r.helmetid, DATE_FORMAT(r.rentdate,'%Y-%m-%d %H:%i:%s'), r.rentplaceName, r.returndate, r.returnplaceName
+		from rent r
+		where r.memberid = #{memberid}
+	</select>
+	
+	 	<select id="helmetlist" resultType="helmetVO">
+	        select  * from helmet
+     </select> 
+     
+ 	<select id="memberlist" resultType="loginVO">
+	        select  * from member
+     </select> 
+     
+ 	<select id="rentalshoplist" resultType="rentalshopVO">
+	        select  * from rentalshop
+     </select> 
+     
+ 	<select id="adminpointlist" resultType="pointVO">
+		select * from point
+	</select>
+
+</mapper>
